@@ -1,7 +1,19 @@
+import * as firebase from 'firebase';
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+
+// Initialize Firebase
+const config = {
+  apiKey: "AIzaSyCMwoR7bzu0lcgsCrGzXX7h2G2EoA3MJ8s",
+  authDomain: "meeting-minutes-app.firebaseapp.com",
+  databaseURL: "https://meeting-minutes-app.firebaseio.com",
+  projectId: "meeting-minutes-app",
+  storageBucket: "meeting-minutes-app.appspot.com",
+  messagingSenderId: "1062177372901"
+};
+const firebaseApp = firebase.initializeApp(config);
 
 export default class App extends React.Component {
   state = {
