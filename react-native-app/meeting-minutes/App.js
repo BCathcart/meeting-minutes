@@ -1,9 +1,46 @@
+import firebase from 'firebase';
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import {API_KEY, AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID} from 'react-native-dotenv';
+
+// Initialize Firebase
+
+
+
+
+
+
+
 
 export default class App extends React.Component {
+  componentWillMount(){
+    var config = {
+      apiKey: API_KEY,
+      authDomain: AUTH_DOMAIN,
+      databaseURL: DATABASE_URL,
+      projectId: PROJECT_ID,
+      storageBucket: STORAGE_BUCKET,
+      messagingSenderId: MESSAGING_SENDER_ID
+    };
+    firebase.initializeApp(config);
+    //Reference to the database service
+    var database = firebase.database();
+
+    database.ref('meeting-minutes-app').set({
+      nandinibulusu: {
+        full_name: "Nandini Bulusu"
+      },
+      braedenjury: {
+        full_name: "Braeden Christopher Jury"
+      },
+      harrisonturley: {
+        full_name: "Harrison Walter Turley"
+      }
+    });
+  }
+
   state = {
     isLoadingComplete: false,
   };

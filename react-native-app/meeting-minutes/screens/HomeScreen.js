@@ -12,6 +12,7 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+import {API_KEY} from 'react-native-dotenv';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -44,7 +45,7 @@ export default class HomeScreen extends React.Component {
             </View>
             
             <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
+            {API_KEY}
             </Text>
           </View> */}
 
