@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from 'firebase';
 import {
   Image,
   StyleSheet,
@@ -8,7 +9,9 @@ import {
 } from 'react-native';
 
 
+
 export default class MeetingMenuScreen extends React.Component {
+
   static navigationOptions = {
     header: null
   };
@@ -34,6 +37,11 @@ export default class MeetingMenuScreen extends React.Component {
   }
 
   _onPressNewMeeting = () => {
+    var database = firebase.database();
+    var generatedCode = makeid();
+    database.ref('codes/' + generatedCode).push({
+        stuff: "[]",
+  });
     this.props.navigation.navigate('NewMeeting');
   }
 
@@ -42,6 +50,15 @@ export default class MeetingMenuScreen extends React.Component {
   }
 
   }
+  function makeid() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 5; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
 
 const styles = StyleSheet.create({
   container: {

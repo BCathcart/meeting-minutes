@@ -18,21 +18,9 @@ export default class App extends React.Component {
       messagingSenderId: MESSAGING_SENDER_ID
     };
     firebase.initializeApp(config);
-    //Reference to the database service
-    var database = firebase.database();
-
-    database.ref('meeting-minutes-app').set({
-      nandinibulusu: {
-        full_name: "Nandini Bulusu"
-      },
-      braedenjury: {
-        full_name: "Braeden Christopher Jury"
-      },
-      harrisonturley: {
-        full_name: "Harrison Walter Turley"
-      }
-    });
   }
+
+    //Reference to the database service
 
   state = {
     isLoadingComplete: false,
