@@ -46,7 +46,7 @@ export default class MeetingMenuScreen extends React.Component {
   }
 
   _onPressJoinMeeting = () => {
-
+    this.props.navigation.navigate('EnterCode');
   }
 
   }
