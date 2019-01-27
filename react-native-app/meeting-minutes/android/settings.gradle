@@ -1,1 +1,3 @@
 include ':app'
+include ':react-native-my-native-module'
+project(':react-native-my-native-module').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-my-native-module/android')

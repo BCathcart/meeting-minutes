@@ -5,16 +5,17 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <permission
-    android:name="com.fish.s.permission.C2D_MESSAGE"
+    android:name="com.freakycoder.my_rn_project.permission.C2D_MESSAGE"
     android:protectionLevel="signature"/>
 
   <!-- These are required permissions to make the app run -->
-  <uses-permission android:name="com.fish.s.permission.C2D_MESSAGE" />
+  <uses-permission android:name="com.freakycoder.my_rn_project.permission.C2D_MESSAGE" />
   <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
   <uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
 
   <!-- ADD PERMISSIONS HERE -->
   <!-- BEGIN OPTIONAL PERMISSIONS -->
@@ -37,6 +38,7 @@
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+  <uses-permission android:name="android.permission.READ_SMS" />
   <!-- END OPTIONAL PERMISSIONS -->
 
   <!-- ADD TEST PERMISSIONS HERE -->
@@ -58,6 +60,7 @@
       android:launchMode="singleTask"
       android:screenOrientation="portrait"
       android:theme="@android:style/Theme.Translucent.NoTitleBar">
+      <!-- ADD SHELL SCHEME HERE -->
     </activity>
 
     <activity
@@ -74,7 +77,7 @@
       android:theme="@style/Theme.Exponent.Splash"
       android:windowSoftInputMode="adjustResize">
       <intent-filter>
-        <data android:scheme="exp37ab1dd01efa4e9a8153349ccf942200"/>
+        <data android:scheme="exp544815e58df34311aac6d013e17d4f39"/>
 
         <action android:name="android.intent.action.VIEW"/>
 
@@ -87,6 +90,16 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
       <!-- ADD DETACH APP SPECIFIC INTENT FILTERS -->
+    </activity>
+
+    <activity
+      android:name=".experience.ShellAppActivity"
+      android:launchMode="singleTask"
+      android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+      android:theme="@style/Theme.Exponent.Splash"
+      android:windowSoftInputMode="adjustResize">
+      <!-- ADD SHELL INTENT FILTERS HERE -->
+      <!-- ADD SHELL APP SPECIFIC INTENT FILTERS -->
     </activity>
 
     <activity
@@ -111,28 +124,14 @@
 
 
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- WHEN_PREPARING_SHELL_REMOVE_FROM_HERE -->
     <!-- ADD DEV SETTINGS HERE -->
-    <activity android:name="abi32_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- BEGIN_SDK_31 -->
-    <activity android:name="abi31_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_31 -->
-    <!-- BEGIN_SDK_30 -->
     <activity android:name="abi30_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_30 -->
-    <!-- BEGIN_SDK_29 -->
     <activity android:name="abi29_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_29 -->
-    <!-- BEGIN_SDK_28 -->
     <activity android:name="abi28_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_28 -->
-    <!-- BEGIN_SDK_27 -->
     <activity android:name="abi27_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_27 -->
-    <!-- BEGIN_SDK_26 -->
     <activity android:name="abi26_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
-    <!-- END_SDK_26 -->
-    <!-- WHEN_PREPARING_SHELL_REMOVE_TO_HERE -->
+    <activity android:name="abi25_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
+    <activity android:name="abi24_0_0.com.facebook.react.devsupport.DevSettingsActivity"/>
 
     <activity
       android:name=".ExponentDevActivity"
@@ -156,7 +155,7 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="com.fish.s" android:path="oauthredirect"/>
+        <data android:scheme="com.freakycoder.my_rn_project" android:path="oauthredirect"/>
       </intent-filter>
     </activity>
 
@@ -174,23 +173,10 @@
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
             <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="expo.modules.payments.stripe.2c3c5449-1196-446b-815d-f596eb4f49b4" />
+            <data android:scheme="expo.modules.payments.stripe.7d7caa74-e716-4ed7-acb8-2a7f029a4d2b" />
         </intent-filter>
     </activity>
     <!-- Versioned Activity for Stripe -->
-    <activity
-        android:exported="true"
-        android:launchMode="singleTask"
-        android:name="abi31_0_0.expo.modules.payments.stripe.RedirectUriReceiver"
-        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="abi31_0_0.expo.modules.payments.stripe" />
-        </intent-filter>
-    </activity>
-
     <!-- END OF STRIPE SCHEMES -->
 
     <activity
@@ -263,7 +249,7 @@
         <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
         <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
 
-        <category android:name="com.fish.s"/>
+        <category android:name="com.freakycoder.my_rn_project"/>
       </intent-filter>
     </receiver>
 
@@ -330,7 +316,7 @@
     <!-- The Facebook SDK runs FacebookInitProvider on startup and crashes if there isn't an ID here -->
     <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="fb0"/>
 
-    <meta-data android:name="standaloneStripeScheme" android:value="2c3c5449-1196-446b-815d-f596eb4f49b4" />
+    <meta-data android:name="standaloneStripeScheme" android:value="7d7caa74-e716-4ed7-acb8-2a7f029a4d2b" />
   </application>
 
 </manifest>
