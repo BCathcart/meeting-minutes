@@ -12,7 +12,6 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import {API_KEY} from 'react-native-dotenv';
 
 import { withNavigation } from 'react-navigation';
 
@@ -38,14 +37,14 @@ export default class HomeScreen extends React.Component {
 
           {/* <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
-            
-            
+
+
             <Text style={styles.getStartedText}>Get started by opening</Text>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
             </View>
-            
+
             <Text style={styles.getStartedText}>
             {API_KEY}
             </Text>
