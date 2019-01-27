@@ -9,6 +9,10 @@ export default class App extends React.Component {
   };
 
   render() {
+    Permissions.getAsync(Permissions.AUDIO_RECORDER);
+    if (status !== 'granted') {
+      alert('Hey! You might want to enable notifications for my app, they are good.');
+    }
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -29,6 +33,10 @@ export default class App extends React.Component {
 
 
   _loadResourcesAsync = async () => {
+    const { status } = await Permissions.getAsync(Permissions.AUDIO_RECORDER);
+    if (status !== 'granted') {
+      alert('Hey! You might want to enable notifications for my app, they are good.');
+    }
     return Promise.all([
       Asset.loadAsync([
         require('./assets/images/robot-dev.png'),

@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-import Audio from '../components/audio'
 
 import { MonoText } from '../components/StyledText';
 
@@ -45,7 +44,6 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.getStartedText}>
               Change this text and your app will automatically reload.
             </Text>
-            <Audio fileName="test"/>
           </View>
 
           <View style={styles.helpContainer}>

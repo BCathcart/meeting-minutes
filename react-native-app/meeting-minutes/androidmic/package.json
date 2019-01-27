@@ -1,0 +1,11 @@
+{
+  "name": "androidmic",
+  "version": "1.0.0",
+  "description": "\"A utility for streaming Android sound data to Microsoft Azure\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "braedenj",
+  "license": "MIT"
+}
