@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default class NewMeetingScreen extends React.Component {
@@ -18,6 +19,11 @@ render() {
   return (
 
     <View style={styles.container}>
+    <Icon onPress={this._onPressBackButton}
+        name='arrow-left'
+        size={50}
+        color='black'
+        style={styles.icon}/>
 
     <Text style={styles.meetingCode}>Your meeting code is: <Text style={{color: 'green'}}> {code} </Text> </Text>
 
@@ -33,6 +39,9 @@ render() {
 
 _onPressOkay = () => {
   this.props.navigation.navigate('Blah');
+}
+_onPressBackButton = () => {
+  this.props.navigation.pop();
 }
 }
 
@@ -60,5 +69,12 @@ const styles = StyleSheet.create({
     bottom: 120,
     paddingVertical: 20,
     alignSelf: 'center',
+  },
+  icon: {
+    position: 'absolute',
+    top: 30,
+    left: 10,
+    paddingVertical: 10,
+    alignSelf: 'flex-start',
   }
 });

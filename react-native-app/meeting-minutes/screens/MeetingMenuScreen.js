@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   Image,
   StyleSheet,
@@ -20,6 +21,13 @@ export default class MeetingMenuScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+    <Icon onPress={this._onPressBackButton}
+        name='arrow-left'
+        size={50}
+        color='black'
+        style={styles.icon}/>
+
+
 
         <TouchableOpacity onPress={this._onPressNewMeeting} style={styles.continueButton}>
               <Image
@@ -50,6 +58,10 @@ export default class MeetingMenuScreen extends React.Component {
     this.props.navigation.navigate('EnterCode');
   }
 
+  _onPressBackButton = () => {
+    this.props.navigation.pop();
+  }
+
   }
   function makeid() {
   var text = "";
@@ -77,5 +89,12 @@ const styles = StyleSheet.create({
     bottom: 120,
     paddingVertical : 20,
     alignSelf: 'center',
+  },
+  icon: {
+    position: 'absolute',
+    top: 30,
+    left: 10,
+    paddingVertical: 10,
+    alignSelf: 'flex-start',
   }
 });
