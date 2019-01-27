@@ -4,6 +4,7 @@ import { createAppContainer, createSwitchNavigator, createStackNavigator } from 
 //import MainTabNavigator from './MainTabNavigator';
 import HomeScreen from '../screens/HomeScreen';
 import MeetingMenuScreen from '../screens/MeetingMenuScreen';
+import NewMeetingScreen from '../screens/NewMeetingScreen';
 
 //const AppStack = createStackNavigator({ Home: HomeScreen, NewMeeting: LinksScreen});
 
@@ -16,6 +17,7 @@ export default createAppContainer(createSwitchNavigator({
   // Auth: AuthStack,
   //Main: AppStack
   Home: HomeScreen,
-  Continue: MeetingMenuScreen
-  
+  Continue: MeetingMenuScreen,
+  NewMeeting: NewMeetingScreen,
+
 }));
