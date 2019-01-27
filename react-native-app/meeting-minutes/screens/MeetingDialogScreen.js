@@ -45,11 +45,13 @@ let htmlDialog = '';
 
 let htmlEnd = "</body></html>";
 
+
 export default class MeetingMenuScreen extends React.Component {
 
   static navigationOptions = {
     header: null
   };
+  
 
   state = {
     textValue: '',
@@ -59,7 +61,7 @@ export default class MeetingMenuScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style = {{flex: 4}}>
+        <View style = {{flex: 5}}>
         <ScrollView
           style={styles.scrollView}
           ref={ref => this.scrollView = ref}
@@ -76,22 +78,37 @@ export default class MeetingMenuScreen extends React.Component {
           }
           </ScrollView>
         </View>
-        <View style={{flex: 1}}>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+          <Button title="Get Dialog"  onPress={this._onGetDialog} style={styles.endButton}
+          icon={
+            <Icon name='bell' size ={15} color='black'/>
+          }
+          buttonStyle={{
+          backgroundColor: "#1995AD",
+          width: 300,
+          height: 45,
+          borderWidth: 0,
+          borderRadius: 5,}}
+          />
+        </View>
+
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
           <Button title="End Meeting"  onPress={this._onEndMeeting} style={styles.endButton}
           icon={
             <Icon name='bell' size ={15} color='black'/>
           }
-      buttonStyle={{
-      backgroundColor: "#1995AD",
-      width: 300,
-      height: 45,
-      borderWidth: 0,
-      borderRadius: 5,}}
-      />
+          buttonStyle={{
+          backgroundColor: "#1995AD",
+          width: 300,
+          height: 45,
+          borderWidth: 0,
+          borderRadius: 5,}}
+          />
         </View>
       </View>
     );
   }
+
 
   _onEndMeeting = () => {
     this.state.dialogArr.push("newelement" + count);
@@ -100,23 +117,6 @@ export default class MeetingMenuScreen extends React.Component {
     });
 
     htmlStart += "<p>newelement" + count + "</p>";
-
-    // var RNFS = require('react-native-fs');
-    // // create a path you want to write to
-    // var path = RNFS.DocumentDirectoryPath + '/test.html';
-
-    // // write the file
-    // RNFS.writeFile(path, '<text>Boys we got him</text>', 'utf8')
-    // .then((success) => {
-    // console.log('FILE WRITTEN!');
-    // })
-    // .catch((err) => {
-    // console.log(err.message);
-    // });
-
-    // this.setState(prevState => ({
-    //   dialogArr: [...prevState.dialogArr, newelement]
-    // }))
     
     count++;
     this.props.navigation.navigate('SavePdf');
@@ -135,6 +135,38 @@ export default class MeetingMenuScreen extends React.Component {
     console.log(file.filePath);
     alert(file.filePath);
   }
+  
+
+  _onGetDialog = () => {
+    const { code } = this.props.navigation.state.params.data;
+
+    console.log("code" + code);
+
+    // this.listener = EventRegister.addEventListener('myCustomEvent', (data) => {
+    //     this.setState({
+    //         data,
+    //     })
+    // })
+    
+    var db = firebase.database();
+
+    // Check if the code is in the database
+    var ref = db.ref('codes').child(code);
+    var childData;
+
+    ref.on("child_added", function(snapshot, prevChildKey) {
+      var newPost = snapshot.val();
+      // console.log("Author: " + newPost.author);
+      // console.log("Title: " + newPost.title);
+      // console.log("Previous Post ID: " + prevChildKey);
+      childData = newPost;
+    });
+    this.state.dialogArr.push(childData);
+    this.setState({
+      "dialogArr": this.state.dialogArr,
+    });
+    
+  }
 
   }
 
@@ -145,12 +177,10 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     top: 30,
-    bottom: 100,
+    bottom: 150,
   },
   endButton: {
     position: 'absolute',
-    bottom: 10,
-    paddingVertical : 20,
     alignSelf: 'center',
   },
   item_text_style:
