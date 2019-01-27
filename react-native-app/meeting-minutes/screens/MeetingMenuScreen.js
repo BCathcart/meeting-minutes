@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Header} from 'react-native-elements';
 import {
   Image,
   StyleSheet,
@@ -21,9 +22,13 @@ export default class MeetingMenuScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontWeight: 'bold' }}}
+      containerStyle={{
+        backgroundColor: '#1995AD'
+      }}/>
     <Icon onPress={this._onPressBackButton}
         name='arrow-left'
-        size={50}
+        size={35}
         color='black'
         style={styles.icon}/>
 
@@ -31,7 +36,7 @@ export default class MeetingMenuScreen extends React.Component {
 
         <TouchableOpacity onPress={this._onPressNewMeeting} style={styles.continueButton}>
               <Image
-                source={require('../assets/images/button_setup-meeting.png')}
+                source={require('../assets/images/button_new-meeting.png')}
               />
         </TouchableOpacity>
 
@@ -80,19 +85,19 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     position: 'absolute',
-    bottom: 250,
+    bottom: 350,
     paddingVertical : 20,
     alignSelf: 'center',
   },
   setupButton: {
     position: 'absolute',
-    bottom: 120,
+    bottom: 240,
     paddingVertical : 20,
     alignSelf: 'center',
   },
   icon: {
     position: 'absolute',
-    top: 30,
+    top: 10,
     left: 10,
     paddingVertical: 10,
     alignSelf: 'flex-start',

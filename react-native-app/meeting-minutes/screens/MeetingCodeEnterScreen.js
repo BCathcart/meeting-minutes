@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Header} from 'react-native-elements';
 import {
   Image,
   StyleSheet,
@@ -24,9 +25,13 @@ export default class MeetingCodeEnterScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontWeight: 'bold' }}}
+      containerStyle={{
+        backgroundColor: '#1995AD'
+      }}/>
       <Icon onPress={this._onPressBackButton}
           name='arrow-left'
-          size={50}
+          size={35}
           color='black'
           style={styles.icon}/>
 
@@ -42,8 +47,8 @@ export default class MeetingCodeEnterScreen extends React.Component {
 
         <View style={styles.textBox}>
             <TextInput
-            style={{fontSize: 44}}
-            placeholder="Enter Code..."
+            style={{fontSize: 35}}
+            placeholder="Enter code here"
             onChangeText={(text) => this.setState({code:text})}
             />
         </View>
@@ -114,8 +119,10 @@ const styles = StyleSheet.create({
   },
   textBox: {
     position: 'absolute',
-    fontSize: 44,
-    bottom: 260,
+
+    fontSize: 35,
+    bottom: 225,
+
     alignSelf: 'center',
     textAlign: 'center',
   },
@@ -127,7 +134,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     position: 'absolute',
-    top: 30,
+    top: 10,
     left: 10,
     paddingVertical: 10,
     alignSelf: 'flex-start',
