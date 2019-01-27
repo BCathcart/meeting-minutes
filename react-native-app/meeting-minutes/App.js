@@ -3,33 +3,44 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import {API_KEY, AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID} from 'react-native-dotenv';
 
 // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyCMwoR7bzu0lcgsCrGzXX7h2G2EoA3MJ8s",
-  authDomain: "meeting-minutes-app.firebaseapp.com",
-  databaseURL: "https://meeting-minutes-app.firebaseio.com",
-  projectId: "meeting-minutes-app",
-  storageBucket: "meeting-minutes-app.appspot.com",
-  messagingSenderId: "1062177372901"
-};
-firebase.initializeApp(config);
 
-//Reference to the database service
-var database = firebase.database();
 
-database.ref('meeting-minutes-app').set({
-  nandinibulusu: {
-    full_name: "Nandini Bulusu"
-  },
-  braedenjury: {
-    full_name: "Braeden Jury"
-  }
-});
+
+
+
 
 
 
 export default class App extends React.Component {
+  componentWillMount(){
+    var config = {
+      apiKey: API_KEY,
+      authDomain: AUTH_DOMAIN,
+      databaseURL: DATABASE_URL,
+      projectId: PROJECT_ID,
+      storageBucket: STORAGE_BUCKET,
+      messagingSenderId: MESSAGING_SENDER_ID
+    };
+    firebase.initializeApp(config);
+    //Reference to the database service
+    var database = firebase.database();
+
+    database.ref('meeting-minutes-app').set({
+      nandinibulusu: {
+        full_name: "Nandini Bulusu"
+      },
+      braedenjury: {
+        full_name: "Braeden Christopher Jury"
+      },
+      harrisonturley: {
+        full_name: "Harrison Walter Turley"
+      }
+    });
+  }
+
   state = {
     isLoadingComplete: false,
   };
