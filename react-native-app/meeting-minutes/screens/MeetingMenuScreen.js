@@ -33,31 +33,35 @@ export default class MeetingMenuScreen extends React.Component {
         color='black'
         style={styles.icon}/>
 
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 2}}></View>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+          <Button title="New Meeting"  onPress={this._onPressNewMeeting} style={styles.continueButton}
+          icon={
+            <Icon name='group' size ={15} color='black'/>
+          }
+          buttonStyle={{
+          backgroundColor: "#1995AD",
+          width: 300,
+          height: 45,
+          borderWidth: 0,
+          borderRadius: 5}}
+          />
+        </View>
 
-
-        <Button title="New Meeting"  onPress={this._onPressNewMeeting} style={styles.continueButton}
-        icon={
-          <Icon name='group' size ={15} color='black'/>
-        }
-    buttonStyle={{
-    backgroundColor: "#1995AD",
-    width: 300,
-    height: 45,
-    borderWidth: 0,
-    borderRadius: 5}}
-    />
-
-        <Button title="Join Meeting"  onPress={this._onPressJoinMeeting} style={styles.setupButton}
-        icon={
-          <Icon name='group' size ={15} color='black'/>
-        }
-    buttonStyle={{
-    backgroundColor: "#A1D2E6",
-    width: 300,
-    height: 45,
-    borderWidth: 0,
-    borderRadius: 5,}}
-    />
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+          <Button title="Join Meeting"  onPress={this._onPressJoinMeeting} style={styles.setupButton}
+          icon={
+            <Icon name='group' size ={15} color='black'/>
+          }
+          buttonStyle={{
+          backgroundColor: "#A1D2E6",
+          width: 300,
+          height: 45,
+          borderWidth: 0,
+          borderRadius: 5,}}
+          />
+        </View>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 2}}></View>
 
       </View>
     );
@@ -98,15 +102,15 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     position: 'absolute',
-    top: 175,
-    paddingVertical : 20,
+    //top: 175,
+    //paddingVertical : 20,
     alignSelf: 'center',
 
   },
   setupButton: {
     position: 'absolute',
-    top: 240,
-    paddingVertical : 20,
+    //top: 240,
+    //paddingVertical : 20,
     alignSelf: 'center',
   },
   icon: {

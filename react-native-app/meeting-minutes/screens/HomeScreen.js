@@ -38,86 +38,36 @@ export default class HomeScreen extends React.Component {
             />
           </View>
 
-          {/* <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}></View>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 2}}>
+          <Button title="Continue" onPress={this._onPressContinue} style={styles.continueButton}
+          icon={
+            <Icon name='long-arrow-right' size ={15} color='black'/>
+          }
+          buttonStyle={{
+            backgroundColor: "#1995AD",
+            width: 300,
+            height: 50,
+            borderWidth: 0,
+            borderRadius: 5}}
+            />
+        </View>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+          <Button title="Set up Verification" onPress={this._onPressSetup} style={styles.setupButton}
+          icon={
+            <Icon name='send-o' size ={15} color='black'/>
+          }
+          buttonStyle={{
+            backgroundColor: "#A1D2E6",
+            width: 300,
+            height: 50,
+            borderWidth: 0,
+            borderRadius: 5}}
+            />
+        </View>
 
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 2}}></View>
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-            {API_KEY}
-            </Text>
-          </View> */}
-
-          {/* <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View> */}
-
-        {/* <Button
-          style={styles.continueButton}
-          onPress={this.onPressContinue}
-          title="Continue"
-          color="#1995AD"
-          accessibilityLabel="Learn more about this purple button"
-        /> */}
-        {/* <View style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-        }}>
-          <View>
-            <TouchableOpacity onPress={this._onPressContinue} style={styles.continueButton}>
-              <Image
-                source={require('../assets/images/robot-dev.png')}
-              />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <TouchableOpacity onPress={this._onPressSetup} style={styles.setupButton}>
-              <Image
-                source={require('../assets/images/robot-dev.png')}
-              />
-            </TouchableOpacity>
-          </View>
-        </View> */}
-
-        <Button title="Continue" onPress={this._onPressContinue} style={styles.continueButton}
-        icon={
-          <Icon name='long-arrow-right' size ={15} color='black'/>
-        }
-  buttonStyle={{
-    backgroundColor: "#1995AD",
-    width: 300,
-    height: 50,
-    borderWidth: 0,
-    borderRadius: 5}}
-    />
-
-        <Button title="Set up Verification" onPress={this._onPressSetup} style={styles.setupButton}
-        icon={
-          <Icon name='send-o' size ={15} color='black'/>
-        }
-  buttonStyle={{
-    backgroundColor: "#A1D2E6",
-    width: 300,
-    height: 50,
-    borderWidth: 0,
-    borderRadius: 5}}
-    />
-
-        {/* <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View> */}
       </View>
     );
   }
@@ -251,14 +201,10 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     position: 'absolute',
-    top: 100,
-    paddingVertical : 20,
     alignSelf: 'center',
   },
   setupButton: {
     position: 'absolute',
-    top: 175,
-    paddingVertical : 20,
     alignSelf: 'center',
   }
 });

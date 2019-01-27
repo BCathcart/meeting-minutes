@@ -43,13 +43,13 @@ export default class MeetingCodeEnterScreen extends React.Component {
         icon={
           <Icon name='play' size ={15} color='black'/>
         }
-    buttonStyle={{
-    backgroundColor: "#1995AD",
-    width: 300,
-    height: 45,
-    borderWidth: 0,
-    borderRadius: 5,}}
-    />
+        buttonStyle={{
+        backgroundColor: "#1995AD",
+        width: 300,
+        height: 45,
+        borderWidth: 0,
+        borderRadius: 5,}}
+        />
 
         <View style={styles.textBox}>
             <TextInput
