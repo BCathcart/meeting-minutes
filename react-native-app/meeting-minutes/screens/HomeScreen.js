@@ -14,15 +14,17 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import {API_KEY} from 'react-native-dotenv';
 
+import { withNavigation } from 'react-navigation';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    //header: null,
+    title: 'Please sign in',
   };
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <View style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -49,12 +51,11 @@ export default class HomeScreen extends React.Component {
             </Text>
           </View> */}
 
-          <View style={styles.helpContainer}>
+          {/* <View style={styles.helpContainer}>
             <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
               <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
             </TouchableOpacity>
-          </View>
-        </ScrollView>
+          </View> */}
 
         {/* <Button
           style={styles.continueButton}
@@ -107,11 +108,11 @@ export default class HomeScreen extends React.Component {
     );
   }
 
-  _onPressContinue() {
-
+  _onPressContinue = () => {
+    this.props.navigation.navigate('Continue');
   }
 
-  _onPressSetup() {
+  _onPressSetup = () => {
 
   }
 
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 75,
     marginBottom: 20,
   },
   welcomeImage: {
@@ -173,7 +174,6 @@ const styles = StyleSheet.create({
     height: 80,
     resizeMode: 'contain',
     marginTop: 3,
-    marginLeft: -10,
   },
   getStartedContainer: {
     alignItems: 'center',
