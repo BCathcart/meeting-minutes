@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-native';
 import {
   Image,
   Platform,
@@ -13,15 +14,17 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import {API_KEY} from 'react-native-dotenv';
 
+import { withNavigation } from 'react-navigation';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    //header: null,
+    title: 'Please sign in',
   };
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <View style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -33,36 +36,84 @@ export default class HomeScreen extends React.Component {
             />
           </View>
 
-          <View style={styles.getStartedContainer}>
+          {/* <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
-
+            
+            
             <Text style={styles.getStartedText}>Get started by opening</Text>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
             </View>
-
+            
             <Text style={styles.getStartedText}>
             {API_KEY}
             </Text>
-          </View>
+          </View> */}
 
-          <View style={styles.helpContainer}>
+          {/* <View style={styles.helpContainer}>
             <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
               <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
             </TouchableOpacity>
-          </View>
-        </ScrollView>
+          </View> */}
 
-        <View style={styles.tabBarInfoContainer}>
+        {/* <Button
+          style={styles.continueButton}
+          onPress={this.onPressContinue}
+          title="Continue"
+          color="#1995AD"
+          accessibilityLabel="Learn more about this purple button"
+        /> */}
+        {/* <View style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}>
+          <View>
+            <TouchableOpacity onPress={this._onPressContinue} style={styles.continueButton}>
+              <Image
+                source={require('../assets/images/robot-dev.png')}
+              />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity onPress={this._onPressSetup} style={styles.setupButton}>
+              <Image
+                source={require('../assets/images/robot-dev.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        </View> */}
+
+        <TouchableOpacity onPress={this._onPressContinue} style={styles.continueButton}>
+              <Image
+                source={require('../assets/images/button_continue.png')}
+              />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={this._onPressSetup} style={styles.setupButton}>
+              <Image
+                source={require('../assets/images/button_setup.png')}
+              />
+        </TouchableOpacity>
+
+        {/* <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
           <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
             <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
           </View>
-        </View>
+        </View> */}
       </View>
     );
+  }
+
+  _onPressContinue = () => {
+    this.props.navigation.navigate('Continue');
+  }
+
+  _onPressSetup = () => {
+
   }
 
   _maybeRenderDevelopmentModeWarning() {
@@ -75,8 +126,7 @@ export default class HomeScreen extends React.Component {
 
       return (
         <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
+          {learnMoreButton}
         </Text>
       );
     } else {
@@ -102,7 +152,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F1F1F2',
   },
   developmentModeText: {
     marginBottom: 20,
@@ -116,7 +166,7 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 75,
     marginBottom: 20,
   },
   welcomeImage: {
@@ -124,7 +174,6 @@ const styles = StyleSheet.create({
     height: 80,
     resizeMode: 'contain',
     marginTop: 3,
-    marginLeft: -10,
   },
   getStartedContainer: {
     alignItems: 'center',
@@ -186,4 +235,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2e78b7',
   },
+  continueButton: {
+    position: 'absolute',
+    bottom: 200,
+    paddingVertical : 20,
+    alignSelf: 'center',
+  },
+  setupButton: {
+    position: 'absolute',
+    bottom: 100,
+    paddingVertical : 20,
+    alignSelf: 'center',
+  }
 });
