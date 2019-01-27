@@ -15,6 +15,7 @@ export default createAppContainer(createSwitchNavigator({
   // App: AppStack,
   // Auth: AuthStack,
   //Main: AppStack
-  Home: HomeScreen, 
+  Home: HomeScreen,
   Continue: MeetingMenuScreen
+  
 }));
