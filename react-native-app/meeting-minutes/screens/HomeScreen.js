@@ -7,6 +7,8 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
+  ToastAndroid,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -51,6 +53,12 @@ export default class HomeScreen extends React.Component {
               <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
             </TouchableOpacity>
           </View>
+          <Button 
+            onPress={this._handleTestButtonPress}
+            title="Testing Recording"
+            color="#878787"
+            accessibilityLabel="testing this label's functionality"
+          />
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
@@ -85,6 +93,11 @@ export default class HomeScreen extends React.Component {
         </Text>
       );
     }
+  }
+
+  _handleTestButtonPress = () => {
+    ToastAndroid.show("BUtton is working!", ToastAndroid.SHORT);
+    
   }
 
   _handleLearnMorePress = () => {
