@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button } from 'react-native-elements';
 import {Header} from 'react-native-elements';
 import {
   Image,
@@ -24,7 +25,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container} contentContainerStyle={styles.contentContainer}>
-      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontWeight: 'bold' }}}
+      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular' }}}
       containerStyle={{
         backgroundColor: '#1995AD'
       }}/>
@@ -88,17 +89,29 @@ export default class HomeScreen extends React.Component {
           </View>
         </View> */}
 
-        <TouchableOpacity onPress={this._onPressContinue} style={styles.continueButton}>
-              <Image
-                source={require('../assets/images/button_continue.png')}
-              />
-        </TouchableOpacity>
+        <Button title="Continue" onPress={this._onPressContinue} style={styles.continueButton}
+        icon={
+          <Icon name='long-arrow-right' size ={15} color='black'/>
+        }
+  buttonStyle={{
+    backgroundColor: "#1995AD",
+    width: 300,
+    height: 50,
+    borderWidth: 0,
+    borderRadius: 5}}
+    />
 
-        <TouchableOpacity onPress={this._onPressSetup} style={styles.setupButton}>
-              <Image
-                source={require('../assets/images/button_set-up-verification.png')}
-              />
-        </TouchableOpacity>
+        <Button title="Set up Verification" onPress={this._onPressSetup} style={styles.setupButton}
+        icon={
+          <Icon name='send-o' size ={15} color='black'/>
+        }
+  buttonStyle={{
+    backgroundColor: "#A1D2E6",
+    width: 300,
+    height: 50,
+    borderWidth: 0,
+    borderRadius: 5}}
+    />
 
         {/* <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
@@ -240,13 +253,13 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     position: 'absolute',
-    bottom: 200,
+    top: 175,
     paddingVertical : 20,
     alignSelf: 'center',
   },
   setupButton: {
     position: 'absolute',
-    bottom: 100,
+    top: 250,
     paddingVertical : 20,
     alignSelf: 'center',
   }

@@ -1,8 +1,8 @@
 import React from 'react';
 import firebase from 'firebase';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Header} from 'react-native-elements';
 import {Button} from 'react-native-elements';
+import {Header} from 'react-native-elements';
 import {
   Image,
   StyleSheet,
@@ -12,7 +12,7 @@ import {
   TextInput,
 } from 'react-native';
 
-import RNHTMLtoPDF from 'react-native-html-to-pdf';
+import {API_KEY, AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID} from 'react-native-dotenv';
 
 export default class MeetingCodeEnterScreen extends React.Component {
   static navigationOptions = {
@@ -26,7 +26,7 @@ export default class MeetingCodeEnterScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular' }}}
+      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular'}}}
       containerStyle={{
         backgroundColor: '#1995AD'
       }}/>
@@ -36,29 +36,28 @@ export default class MeetingCodeEnterScreen extends React.Component {
           color='black'
           style={styles.icon}/>
 
-        <Text style = {styles.text}>Please enter{"\n"}your meeting{"\n"}code:</Text>
+        <Text style = {styles.text}>Title:</Text>
 
-        <Text style = {styles.incorrectCodeText}>{this.state.textValue}</Text>
-
-        <Button title="Enter"  onPress={this._onPressEnter} style={styles.enterButton}
+        <Button title="Save Meeting Notes" onPress={this._PressSaveDocument} style={styles.saveButton}
         icon={
-          <Icon name='play' size ={15} color='black'/>
+          <Icon name='file-pdf-o' size ={15} color='white'/>
         }
-    buttonStyle={{
+  buttonStyle={{
     backgroundColor: "#1995AD",
     width: 300,
     height: 45,
     borderWidth: 0,
-    borderRadius: 5,}}
+    borderRadius: 5}}
     />
 
         <View style={styles.textBox}>
             <TextInput
             style={{fontSize: 35}}
-            placeholder="Enter code here"
+            placeholder="Enter title here"
             onChangeText={(text) => this.setState({code:text})}
             />
         </View>
+
 
       </View>
     );
@@ -67,38 +66,11 @@ export default class MeetingCodeEnterScreen extends React.Component {
 
   _onPressEnter = () => {
     // If nothing entered return
-    if (this.state.code == undefined || this.state.code == '')
-        return;
-
-    //console.log(this.state.code);
-    var db = firebase.database();
-
-    // Check if the code is in the database
-    var ref = db.ref('codes').child(this.state.code);
-    var childData;
-    console.log(ref);
-    ref.on('value', function(snapshot) {
-        childData = snapshot.val();
-        console.log(childData);
-    });
-
-    if (childData != null) {
-        this.setState({
-            textValue: ''
-        });
-        this.props.navigation.navigate('MeetingDialog');
-    } else {
-        this.setState({
-            textValue: 'Incorrect Code'
-        });
-        this.props.navigation.navigate('MeetingDialog'); // TODO: remove
-    }
 
   }
   _onPressBackButton = () => {
     this.props.navigation.pop();
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -116,25 +88,14 @@ const styles = StyleSheet.create({
     textShadowColor: "#1995ad",
     textShadowRadius: 20,
   },
-  incorrectCodeText: {
-    top: 140,
-    color: '#cc0000',
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    textShadowColor: "#1995ad",
-    textShadowRadius: 20,
-  },
   textBox: {
     position: 'absolute',
-
     fontSize: 35,
-    bottom: 225,
-
+    bottom: 400,
     alignSelf: 'center',
     textAlign: 'center',
   },
-  enterButton: {
+  saveButton: {
     position: 'absolute',
     top: 240,
     paddingVertical : 20,

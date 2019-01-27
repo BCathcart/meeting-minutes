@@ -1,6 +1,7 @@
 import React from 'react';
-import firebase from 'firebase';
+import firebase from 'firebase';;
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Button} from 'react-native-elements';
 import {Header} from 'react-native-elements';
 import {
   Image,
@@ -22,29 +23,41 @@ export default class MeetingMenuScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontWeight: 'bold' }}}
+      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular' }}}
       containerStyle={{
         backgroundColor: '#1995AD'
       }}/>
     <Icon onPress={this._onPressBackButton}
-        name='arrow-left'
+        name='arrow-circle-o-left'
         size={35}
         color='black'
         style={styles.icon}/>
 
 
 
-        <TouchableOpacity onPress={this._onPressNewMeeting} style={styles.continueButton}>
-              <Image
-                source={require('../assets/images/button_new-meeting.png')}
-              />
-        </TouchableOpacity>
+        <Button title="New Meeting"  onPress={this._onPressNewMeeting} style={styles.continueButton}
+        icon={
+          <Icon name='group' size ={15} color='black'/>
+        }
+    buttonStyle={{
+    backgroundColor: "#1995AD",
+    width: 300,
+    height: 45,
+    borderWidth: 0,
+    borderRadius: 5}}
+    />
 
-        <TouchableOpacity onPress={this._onPressJoinMeeting} style={styles.setupButton}>
-              <Image
-                source={require('../assets/images/button_join-meeting.png')}
-              />
-        </TouchableOpacity>
+        <Button title="Join Meeting"  onPress={this._onPressJoinMeeting} style={styles.setupButton}
+        icon={
+          <Icon name='group' size ={15} color='black'/>
+        }
+    buttonStyle={{
+    backgroundColor: "#A1D2E6",
+    width: 300,
+    height: 45,
+    borderWidth: 0,
+    borderRadius: 5,}}
+    />
 
       </View>
     );
@@ -85,13 +98,14 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     position: 'absolute',
-    bottom: 350,
+    top: 175,
     paddingVertical : 20,
     alignSelf: 'center',
+
   },
   setupButton: {
     position: 'absolute',
-    bottom: 240,
+    top: 240,
     paddingVertical : 20,
     alignSelf: 'center',
   },
