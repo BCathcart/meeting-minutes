@@ -9,7 +9,11 @@ import MeetingCodeEnterScreen from '../screens/MeetingCodeEnterScreen';
 const AppStack = createStackNavigator({ Home: HomeScreen,
   NewMeeting: NewMeetingScreen,
   Continue: MeetingMenuScreen,
-  EnterCode: MeetingCodeEnterScreen});
+  EnterCode: MeetingCodeEnterScreen,
+  MeetingDialog: MeetingDialogScreen});
+import MeetingDialogScreen from '../screens/MeetingDialogScreen';
+
+//const AppStack = createStackNavigator({ Home: HomeScreen, NewMeeting: LinksScreen});
 
 export default createAppContainer(createSwitchNavigator({
   // You could add another route here for authentication.
