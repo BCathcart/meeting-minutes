@@ -7,13 +7,6 @@ import {API_KEY, AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, STORAGE_BUCKET, MESSAGIN
 
 // Initialize Firebase
 
-
-
-
-
-
-
-
 export default class App extends React.Component {
   componentWillMount(){
     var config = {
