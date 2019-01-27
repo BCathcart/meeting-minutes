@@ -12,7 +12,6 @@ import {
   TextInput,
 } from 'react-native';
 
-import RNHTMLtoPDF from 'react-native-html-to-pdf';
 
 export default class MeetingCodeEnterScreen extends React.Component {
   static navigationOptions = {

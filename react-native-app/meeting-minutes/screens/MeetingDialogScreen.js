@@ -11,7 +11,39 @@ import {
 import { Button } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
+
 let count = 0;
+
+let htmlStart = "<html lang=\"en\"> \
+<head>\
+<title>Page Title</title>\
+<meta charset=\"UTF-8\">\
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\
+<style>\
+body {\
+  font-family: Arial;\
+  margin: 0;\
+}\
+.header {\
+  padding: 10px;\
+  text-align: center;\
+  background: #1abc9c;\
+  color: white;\
+  font-size: 30px;\
+}\
+.content {padding:20px;}\
+</style>\
+</head>\
+<body>\
+<div class=\"header\">\
+  <h1>Meeting Transcription</h1>\
+</div>\
+<div class=\"content\">";
+
+let htmlDialog = '';
+
+let htmlEnd = "</body></html>";
 
 export default class MeetingMenuScreen extends React.Component {
 
@@ -67,6 +99,8 @@ export default class MeetingMenuScreen extends React.Component {
       dialogArr: this.state.dialogArr,
     });
 
+    htmlStart += "<p>newelement" + count + "</p>";
+
     // var RNFS = require('react-native-fs');
     // // create a path you want to write to
     // var path = RNFS.DocumentDirectoryPath + '/test.html';
@@ -83,9 +117,23 @@ export default class MeetingMenuScreen extends React.Component {
     // this.setState(prevState => ({
     //   dialogArr: [...prevState.dialogArr, newelement]
     // }))
+    
     count++;
     this.props.navigation.navigate('SavePdf');
-    console.log(this.state.dialogArr);
+    console.log(htmlStart + htmlDialog + htmlEnd);
+    this.createPDF;
+  }
+
+  async createPDF() {
+    let options = {
+      html: htmlStart + htmlDialog + htmlEnd,
+      fileName: 'test',
+      directory: 'Documents',
+    };
+
+    let file = await RNHTMLtoPDF.convert(options)
+    console.log(file.filePath);
+    alert(file.filePath);
   }
 
   }
