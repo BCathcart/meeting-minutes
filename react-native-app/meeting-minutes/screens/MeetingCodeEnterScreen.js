@@ -34,30 +34,40 @@ export default class MeetingCodeEnterScreen extends React.Component {
           size={35}
           color='black'
           style={styles.icon}/>
+        
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 2, top: 20}}>
+            <Text style = {styles.text}>Please enter{"\n"}your meeting{"\n"}code:</Text>
+        </View>
 
-        <Text style = {styles.text}>Please enter{"\n"}your meeting{"\n"}code:</Text>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+            <Text style = {styles.incorrectCodeText}>{this.state.textValue}</Text>
+        </View>
 
-        <Text style = {styles.incorrectCodeText}>{this.state.textValue}</Text>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+            <View>
+                <TextInput
+                style={{fontSize: 35}}
+                placeholder="Enter code here"
+                onChangeText={(text) => this.setState({code:text})}
+                />
+            </View>
+        </View>
 
-        <Button title="Enter"  onPress={this._onPressEnter} style={styles.enterButton}
-        icon={
-          <Icon name='play' size ={15} color='black'/>
-        }
-        buttonStyle={{
-        backgroundColor: "#1995AD",
-        width: 300,
-        height: 45,
-        borderWidth: 0,
-        borderRadius: 5,}}
-        />
-
-        <View style={styles.textBox}>
-            <TextInput
-            style={{fontSize: 35}}
-            placeholder="Enter code here"
-            onChangeText={(text) => this.setState({code:text})}
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+            <Button title="Enter"  onPress={this._onPressEnter} style={styles.enterButton}
+            icon={
+            <Icon name='play' size ={15} color='black'/>
+            }
+            buttonStyle={{
+            backgroundColor: "#1995AD",
+            width: 300,
+            height: 45,
+            borderWidth: 0,
+            borderRadius: 5,}}
             />
         </View>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}></View>
+
 
       </View>
     );
@@ -106,7 +116,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1F1F2',
   },
   text: {
-    top: 100,
     color: '#000',
     fontSize: 44,
     fontWeight: 'bold',
@@ -116,7 +125,6 @@ const styles = StyleSheet.create({
     textShadowRadius: 20,
   },
   incorrectCodeText: {
-    top: 140,
     color: '#cc0000',
     fontSize: 24,
     fontWeight: 'bold',
@@ -126,16 +134,11 @@ const styles = StyleSheet.create({
   },
   textBox: {
     position: 'absolute',
-
     fontSize: 35,
-    bottom: 225,
-
-    alignSelf: 'center',
     textAlign: 'center',
   },
   enterButton: {
     position: 'absolute',
-    top: 240,
     paddingVertical : 20,
     alignSelf: 'center',
   },

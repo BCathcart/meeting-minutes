@@ -26,39 +26,46 @@ export default class MeetingCodeEnterScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Header centerComponent={{ text: 'Minitum', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular'}}}
-      containerStyle={{
-        backgroundColor: '#1995AD'
-      }}/>
-      <Icon onPress={this._onPressBackButton}
-          name='arrow-circle-o-left'
-          size={35}
-          color='black'
-          style={styles.icon}/>
+        <Header centerComponent={{ text: 'Minitum', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular'}}}
+        containerStyle={{
+          backgroundColor: '#1995AD'
+        }}/>
 
-        <Text style = {styles.text}>Title:</Text>
+        <Icon onPress={this._onPressBackButton}
+            name='arrow-circle-o-left'
+            size={35}
+            color='black'
+            style={styles.icon}/>
 
-        <Button title="Save Meeting Notes" onPress={this._onPressSaveDocument} style={styles.saveButton}
-        icon={
-          <Icon name='file-pdf-o' size ={15} color='white'/>
-        }
-  buttonStyle={{
-    backgroundColor: "#1995AD",
-    width: 300,
-    height: 45,
-    borderWidth: 0,
-    borderRadius: 5}}
-    />
-
-        <View style={styles.textBox}>
-            <TextInput
-            style={{fontSize: 35}}
-            placeholder="Enter title here"
-            onChangeText={(text) => this.setState({code:text})}
-            />
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}></View>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+          <Text style = {styles.text}>Title:</Text>
+        </View>
+        
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+          <View style={styles.textBox}>
+              <TextInput
+              style={{fontSize: 35}}
+              placeholder="Enter title here"
+              onChangeText={(text) => this.setState({code:text})}
+              />
+          </View>
         </View>
 
-
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 3}}>
+          <Button title="Save Meeting Notes" onPress={this._onPressSaveDocument} style={styles.saveButton}
+          icon={
+            <Icon name='file-pdf-o' size ={15} color='white'/>
+          }
+          buttonStyle={{
+            backgroundColor: "#1995AD",
+            width: 300,
+            height: 45,
+            borderWidth: 0,
+            borderRadius: 5}}
+            />
+        </View>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 2}}></View>
       </View>
     );
   }
@@ -79,7 +86,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1F1F2',
   },
   text: {
-    top: 100,
     color: '#000',
     fontSize: 44,
     fontWeight: 'bold',
@@ -91,13 +97,11 @@ const styles = StyleSheet.create({
   textBox: {
     position: 'absolute',
     fontSize: 35,
-    bottom: 400,
     alignSelf: 'center',
     textAlign: 'center',
   },
   saveButton: {
     position: 'absolute',
-    top: 240,
     paddingVertical : 20,
     alignSelf: 'center',
   },

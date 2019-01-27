@@ -31,20 +31,27 @@ render() {
         color='black'
         style={styles.icon}/>
 
-    <Text style={styles.meetingCode}>Your meeting code is: <Text style={{color: 'green'}}> {code} </Text> </Text>
-    <Button title="Start Meeting" onPress={this._onPressOkay} style={styles.okayButton}
-    icon={
-      <Icon name='play' size ={15} color='black'/>
-    }
-buttonStyle={{
-backgroundColor: "#1995AD",
-width: 300,
-height: 45,
-borderWidth: 0,
-borderRadius: 5}}
-/>
+    <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 2}}>
+      <Text style={styles.meetingCode}>Your meeting code is: <Text style={{color: 'green'}}> {code} </Text> </Text>
+    </View>
 
-    <Text style={styles.textNote}> Share this code to have others join your meeting. </Text>
+    <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+      <Text style={styles.textNote}> Share this code to have others join your meeting. </Text>
+    </View>
+
+    <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 2}}>
+      <Button title="Start Meeting" onPress={this._onPressOkay} style={styles.okayButton}
+        icon={
+          <Icon name='play' size ={15} color='black'/>
+        }
+        buttonStyle={{
+        backgroundColor: "#1995AD",
+        width: 300,
+        height: 45,
+        borderWidth: 0,
+        borderRadius: 5}}
+        />
+    </View>
 
     </View>
   );
@@ -65,7 +72,6 @@ const styles = StyleSheet.create({
   },
   meetingCode: {
     position: 'absolute',
-    top: 150,
     fontSize: 44,
     fontWeight:'bold',
     fontFamily: 'source-sans-pro-regular',
@@ -73,14 +79,14 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   textNote: {
+    fontSize: 20,
     position: 'absolute',
-    bottom: 350,
     paddingVertical: 20,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    textAlign: 'center'
   },
   okayButton: {
     position: 'absolute',
-    top: 300,
     paddingVertical: 20,
     alignSelf: 'center',
   },
