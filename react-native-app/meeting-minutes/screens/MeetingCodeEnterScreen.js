@@ -10,7 +10,7 @@ import {
   TextInput,
 } from 'react-native';
 
-import {API_KEY, AUTH_DOMAIN, DATABASE_URL, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID} from 'react-native-dotenv';
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
 
 export default class MeetingCodeEnterScreen extends React.Component {
   static navigationOptions = {
@@ -55,7 +55,7 @@ export default class MeetingCodeEnterScreen extends React.Component {
 
   _onPressEnter = () => {
     // If nothing entered return
-    if (this.state.code == undefined)
+    if (this.state.code == undefined || this.state.code == '')
         return;
 
     //console.log(this.state.code);
@@ -79,12 +79,14 @@ export default class MeetingCodeEnterScreen extends React.Component {
         this.setState({
             textValue: 'Incorrect Code'
         });
+        this.props.navigation.navigate('MeetingDialog'); // TODO: remove
     }
 
   }
   _onPressBackButton = () => {
     this.props.navigation.pop();
   }
+
 }
 
 const styles = StyleSheet.create({
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 20,
   },
   incorrectCodeText: {
-    top: 150,
+    top: 140,
     color: '#cc0000',
     fontSize: 24,
     fontWeight: 'bold',
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
   textBox: {
     position: 'absolute',
     fontSize: 44,
-    bottom: 225,
+    bottom: 260,
     alignSelf: 'center',
     textAlign: 'center',
   },
