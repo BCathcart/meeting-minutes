@@ -8,6 +8,8 @@ import {
   View,
   ScrollView,
 } from 'react-native';
+import { Button } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 let count = 0;
 
@@ -26,8 +28,8 @@ export default class MeetingMenuScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style = {{flex: 4}}>
-        <ScrollView 
-          style={styles.scrollView} 
+        <ScrollView
+          style={styles.scrollView}
           ref={ref => this.scrollView = ref}
           onContentSizeChange={(contentWidth, contentHeight)=>{this.scrollView.scrollToEnd({animated: true});
           }}>
@@ -43,11 +45,17 @@ export default class MeetingMenuScreen extends React.Component {
           </ScrollView>
         </View>
         <View style={{flex: 1}}>
-          <TouchableOpacity onPress={this._onEndMeeting} style={styles.endButton}>
-                <Image
-                  source={require('../assets/images/button_end.png')}
-                />
-          </TouchableOpacity>
+          <Button title="End Meeting"  onPress={this._onEndMeeting} style={styles.endButton}
+          icon={
+            <Icon name='bell' size ={15} color='black'/>
+          }
+      buttonStyle={{
+      backgroundColor: "#1995AD",
+      width: 300,
+      height: 45,
+      borderWidth: 0,
+      borderRadius: 5,}}
+      />
         </View>
       </View>
     );

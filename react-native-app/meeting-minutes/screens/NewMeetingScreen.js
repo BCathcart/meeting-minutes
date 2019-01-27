@@ -8,11 +8,7 @@ import {
 } from 'react-native';
 import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-<<<<<<< HEAD
-import {Button} from 'react-native-elements';
-=======
 import {Header} from 'react-native-elements';
->>>>>>> 072ee86d6c50e016aeaa4a241ef1cb1cbd62b4e5
 
 
 export default class NewMeetingScreen extends React.Component {
@@ -25,37 +21,23 @@ render() {
   return (
 
     <View style={styles.container}>
-    <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontWeight: 'bold' }}}
+    <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular' }}}
     containerStyle={{
       backgroundColor: '#1995AD'
     }}/>
     <Icon onPress={this._onPressBackButton}
-        name='arrow-left'
+        name='arrow-circle-o-left'
         size={35}
         color='black'
         style={styles.icon}/>
 
     <Text style={styles.meetingCode}>Your meeting code is: <Text style={{color: 'green'}}> {code} </Text> </Text>
-    <Button title="Start Meeting"
+    <Button title="Start Meeting" onPress={this._onPressOkay} style={styles.okayButton}
     icon={
-      <Icon name='group' size ={15} color='white'/>
+      <Icon name='play' size ={15} color='black'/>
     }
 buttonStyle={{
-backgroundColor: "rgba(92, 99,216, 1)",
-width: 300,
-height: 45,
-borderWidth: 0,
-borderRadius: 5}}
-/>
-    <TouchableOpacity onPress={this._onPressOkay} style={styles.okayButton}>
-    <Image source={require('../assets/images/button_start-meeting.png')} />
-    </TouchableOpacity>
-    <Button title="Start Meeting"
-    icon={
-      <Icon name='group' size ={15} color='white'/>
-    }
-buttonStyle={{
-backgroundColor: "rgba(92, 99,216, 1)",
+backgroundColor: "#1995AD",
 width: 300,
 height: 45,
 borderWidth: 0,
@@ -69,7 +51,7 @@ borderRadius: 5}}
 }
 
 _onPressOkay = () => {
-  this.props.navigation.navigate('Blah');
+  this.props.navigation.navigate('MeetingDialog');
 }
 _onPressBackButton = () => {
   this.props.navigation.pop();
@@ -83,21 +65,22 @@ const styles = StyleSheet.create({
   },
   meetingCode: {
     position: 'absolute',
-    top: 100,
+    top: 150,
     fontSize: 44,
     fontWeight:'bold',
+    fontFamily: 'source-sans-pro-regular',
     alignSelf: 'center',
     textAlign: 'center'
   },
   textNote: {
     position: 'absolute',
-    bottom: 200,
+    bottom: 350,
     paddingVertical: 20,
     alignSelf: 'center'
   },
   okayButton: {
     position: 'absolute',
-    bottom: 120,
+    top: 300,
     paddingVertical: 20,
     alignSelf: 'center',
   },

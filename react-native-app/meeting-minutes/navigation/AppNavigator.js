@@ -10,8 +10,10 @@ const AppStack = createStackNavigator({ Home: HomeScreen,
   NewMeeting: NewMeetingScreen,
   Continue: MeetingMenuScreen,
   EnterCode: MeetingCodeEnterScreen,
-  MeetingDialog: MeetingDialogScreen});
+  MeetingDialog: MeetingDialogScreen,
+  SavePdf: DocumentSavingScreen});
 import MeetingDialogScreen from '../screens/MeetingDialogScreen';
+import DocumentSavingScreen from '../screens/DocumentSavingScreen';
 
 //const AppStack = createStackNavigator({ Home: HomeScreen, NewMeeting: LinksScreen});
 

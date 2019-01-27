@@ -18,6 +18,9 @@ export default class App extends React.Component {
       messagingSenderId: MESSAGING_SENDER_ID
     };
     firebase.initializeApp(config);
+    Font.loadAsync({
+  'source-sans-pro-regular': require('./assets/fonts/SourceSansPro-Regular.ttf'),
+});
   }
 
     //Reference to the database service
