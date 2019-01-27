@@ -10,7 +10,8 @@ import SuccessScreen from '../screens/SuccessScreen';
 import MeetingDialogScreen from '../screens/MeetingDialogScreen';
 import DocumentSavingScreen from '../screens/DocumentSavingScreen';
 
-const AppStack = createStackNavigator({ Home: HomeScreen,
+const AppStack = createStackNavigator({
+  Home: HomeScreen,
   NewMeeting: NewMeetingScreen,
   Continue: MeetingMenuScreen,
   EnterCode: MeetingCodeEnterScreen,

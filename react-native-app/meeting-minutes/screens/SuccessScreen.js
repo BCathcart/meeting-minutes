@@ -1,26 +1,23 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import { getReminderAsync } from 'expo/build/Calendar';
 
 export default class SuccessScreen extends React.Component {
   static navigationOptions = {
-    title: null,
+    header: null,
   };
 
   render() {
     return (
-      <View onPress={this._onEndMeeting} style={styles.container}>
+    <TouchableOpacity onPress={this._onEndMeeting} style={styles.container}>
         <Text style = {styles.textStyle}>SUCCESS!</Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 
   _onEndMeeting = () => {
-        this.state.dialogArr.push("newelement" + count);
-        this.setState({
-        dialogArr: this.state.dialogArr,
-        });
+        this.props.navigation.navigate('Home');
     }
 }
 
@@ -36,6 +33,7 @@ const styles = StyleSheet.create({
   textStyle: {
     fontSize: 50,
     fontWeight: 'bold',
+    fontFamily: 'source-sans-pro-regular',
     color: '#008000',
   }
 });

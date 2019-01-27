@@ -38,7 +38,7 @@ export default class MeetingCodeEnterScreen extends React.Component {
 
         <Text style = {styles.text}>Title:</Text>
 
-        <Button title="Save Meeting Notes" onPress={this._PressSaveDocument} style={styles.saveButton}
+        <Button title="Save Meeting Notes" onPress={this._onPressSaveDocument} style={styles.saveButton}
         icon={
           <Icon name='file-pdf-o' size ={15} color='white'/>
         }
@@ -64,8 +64,8 @@ export default class MeetingCodeEnterScreen extends React.Component {
   }
 
 
-  _onPressEnter = () => {
-    // If nothing entered return
+  _onPressSaveDocument = () => {
+    this.props.navigation.navigate('SuccessScreen');
 
   }
   _onPressBackButton = () => {
