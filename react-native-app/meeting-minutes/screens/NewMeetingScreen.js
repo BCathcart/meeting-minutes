@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Button} from 'react-native-elements';
 
 
 export default class NewMeetingScreen extends React.Component {
@@ -30,6 +31,17 @@ render() {
     <TouchableOpacity onPress={this._onPressOkay} style={styles.okayButton}>
     <Image source={require('../assets/images/button_start-meeting.png')} />
     </TouchableOpacity>
+    <Button title="Start Meeting"
+    icon={
+      <Icon name='group' size ={15} color='white'/>
+    }
+buttonStyle={{
+backgroundColor: "rgba(92, 99,216, 1)",
+width: 300,
+height: 45,
+borderWidth: 0,
+borderRadius: 5}}
+/>
 
     <Text style={styles.textNote}> Share this code to have others join your meeting. </Text>
 
