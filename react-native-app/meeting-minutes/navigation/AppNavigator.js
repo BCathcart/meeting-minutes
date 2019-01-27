@@ -6,8 +6,10 @@ import HomeScreen from '../screens/HomeScreen';
 import MeetingMenuScreen from '../screens/MeetingMenuScreen';
 import NewMeetingScreen from '../screens/NewMeetingScreen';
 import MeetingCodeEnterScreen from '../screens/MeetingCodeEnterScreen';
-
-//const AppStack = createStackNavigator({ Home: HomeScreen, NewMeeting: LinksScreen});
+const AppStack = createStackNavigator({ Home: HomeScreen,
+  NewMeeting: NewMeetingScreen,
+  Continue: MeetingMenuScreen,
+  EnterCode: MeetingCodeEnterScreen});
 
 export default createAppContainer(createSwitchNavigator({
   // You could add another route here for authentication.
@@ -16,10 +18,5 @@ export default createAppContainer(createSwitchNavigator({
   // AuthLoading: AuthLoadingScreen,
   // App: AppStack,
   // Auth: AuthStack,
-  //Main: AppStack
-  Home: HomeScreen,
-  Continue: MeetingMenuScreen,
-  NewMeeting: NewMeetingScreen,
-
-  EnterCode: MeetingCodeEnterScreen
+  Main: AppStack
 }));
