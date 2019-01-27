@@ -14,10 +14,12 @@ static navigationOptions = {
 };
 
 render() {
+  const { code } = this.props.navigation.state.params.data;
   return (
+
     <View style={styles.container}>
 
-    <Text style={styles.meetingCode}>Your meeting code is: </Text>
+    <Text style={styles.meetingCode}>Your meeting code is: <Text style={{color: 'green'}}> {code} </Text> </Text>
 
     <TouchableOpacity onPress={this._onPressOkay} style={styles.okayButton}>
     <Image source={require('../assets/images/button_start-meeting.png')} />

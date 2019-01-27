@@ -12,6 +12,7 @@ import {
 
 export default class MeetingMenuScreen extends React.Component {
 
+
   static navigationOptions = {
     header: null
   };
@@ -42,7 +43,7 @@ export default class MeetingMenuScreen extends React.Component {
     database.ref('codes/' + generatedCode).push({
         stuff: "[]",
   });
-    this.props.navigation.navigate('NewMeeting');
+    this.props.navigation.navigate('NewMeeting', {data: {code: generatedCode}});
   }
 
   _onPressJoinMeeting = () => {
