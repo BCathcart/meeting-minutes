@@ -23,7 +23,7 @@ export default class MeetingMenuScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular' }}}
+      <Header centerComponent={{ text: 'Minitum', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular' }}}
       containerStyle={{
         backgroundColor: '#1995AD'
       }}/>

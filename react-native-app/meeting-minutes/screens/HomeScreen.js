@@ -25,16 +25,14 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container} contentContainerStyle={styles.contentContainer}>
-      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontFamily: 'source-sans-pro-regular' }}}
+      <Header
       containerStyle={{
         backgroundColor: '#1995AD'
       }}/>
           <View style={styles.welcomeContainer}>
             <Image
               source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
+                  require('../assets/images/blacklogo.png')
               }
               style={styles.welcomeImage}
             />
@@ -182,12 +180,12 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: 'center',
-    marginTop: 75,
-    marginBottom: 20,
+    marginTop: 50,
+    marginBottom: 0,
   },
   welcomeImage: {
-    width: 100,
-    height: 80,
+    width: 300,
+    height: 200,
     resizeMode: 'contain',
     marginTop: 3,
   },
@@ -253,13 +251,13 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     position: 'absolute',
-    top: 175,
+    top: 100,
     paddingVertical : 20,
     alignSelf: 'center',
   },
   setupButton: {
     position: 'absolute',
-    top: 250,
+    top: 175,
     paddingVertical : 20,
     alignSelf: 'center',
   }
