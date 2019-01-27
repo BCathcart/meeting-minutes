@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-native';
+import {Header} from 'react-native-elements';
 import {
   Image,
   Platform,
@@ -17,13 +18,16 @@ import { withNavigation } from 'react-navigation';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    //header: null,
-    title: 'Please sign in',
+    header: null,
   };
 
   render() {
     return (
       <View style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <Header centerComponent={{ text: 'Fish', style: { fontSize: 25, fontWeight: 'bold' }}}
+      containerStyle={{
+        backgroundColor: '#1995AD'
+      }}/>
           <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -92,7 +96,7 @@ export default class HomeScreen extends React.Component {
 
         <TouchableOpacity onPress={this._onPressSetup} style={styles.setupButton}>
               <Image
-                source={require('../assets/images/button_setup.png')}
+                source={require('../assets/images/button_set-up-verification.png')}
               />
         </TouchableOpacity>
 
