@@ -95,7 +95,7 @@ export default class MeetingCodeEnterScreen extends React.Component {
         this.setState({
             textValue: ''
         });
-        this.props.navigation.navigate('MeetingDialog');
+        this.props.navigation.navigate('MeetingDialog', {data: {code: this.state.code}});
     } else {
         this.setState({
             textValue: 'Incorrect Code'
