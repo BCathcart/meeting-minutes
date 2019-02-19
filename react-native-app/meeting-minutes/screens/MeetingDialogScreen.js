@@ -1,18 +1,15 @@
 import React from 'react';
 import firebase from 'firebase';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {Button} from 'react-native-elements';
 import {
-  Image,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   ScrollView,
 } from 'react-native';
-import { Button } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
-import { checkForUpdateAsync } from 'expo/build/Updates/Updates';
 
 // Variables used to create the pdf
 let count = 0;
@@ -48,48 +45,69 @@ let htmlDialog = '';
 let htmlEnd = "</body></html>";
 
 
-// Real-time Firebase read variables
-var currentTranscript = "";
-var oldTranscript = "";
-
-// Update this count every time Firebase updates with a new child
-let currentDialogCount = 0;
-let oldDialogCount = 0;
-
+// Real-time Firebase dialog data
+let currentTranscript;
+let oldTranscript;
 
 export default class MeetingMenuScreen extends React.Component {
 
   static navigationOptions = {
     header: null
   };
-  
-  componentWillMount() {
-    // const { code } = this.props.navigation.state.params.data;
-  
-    // var db = firebase.database();
-
-    // // Check if the code is in the database
-    // var ref = db.ref('codes').child("code");
-    // var childData;
-
-    // // Attach an asynchronous callback to read the data at our posts reference
-    // ref.on("value", function(snapshot) {
-    //   console.log("REAL TIME FIREBASE READ");
-    //   _onGetDialog();
-    //   console.log(snapshot.val());
-    // }, function (errorObject) {
-    //   console.log("The read failed: " + errorObject.code);
-    // });
-  }
 
   constructor() {
     super();
 
-    this._check = this._check.bind(this);
+    this._updateDialog = this._updateDialog.bind(this);
 
     this.state = {
       textValue: '',
       dialogArr: [],
+    }
+  }
+
+  
+  componentWillMount() {
+    const { code } = this.props.navigation.state.params.data;
+  
+    var db = firebase.database();
+
+    // Check if the code is in the database
+    var ref = db.ref('codes').child(code);
+
+    // Attach an asynchronous callback to read the data
+    ref.on("value", function(snapshot) {
+      console.log(snapshot.val());
+      currentTranscript = snapshot.val();
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+  }
+
+  // Update the dialog array every half-second
+  componentDidMount() {
+    this.interval = setInterval(() => this._updateDialog(), 500);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  // Updates the scrollView with any new dialog (checks every half-second)
+  _updateDialog() {
+    if (currentTranscript != undefined && currentTranscript != oldTranscript) {
+      // Make a new array
+      let newDiagArr = [];
+      for (var entry in currentTranscript) {
+        // skip loop if the property is from prototype
+        if (!currentTranscript.hasOwnProperty(entry)) continue;
+        console.log(currentTranscript[entry]);
+        newDiagArr.push(currentTranscript[entry]);
+      }
+      this.setState({
+        "dialogArr": newDiagArr,
+      });
+      oldTranscript = currentTranscript;
     }
   }
 
@@ -113,21 +131,8 @@ export default class MeetingMenuScreen extends React.Component {
           }
           </ScrollView>
         </View>
-        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
-          <Button title="Get Dialog"  onPress={this._onGetDialog} style={styles.endButton}
-          icon={
-            <Icon name='bell' size={15} color='black'/>
-          }
-          buttonStyle={{
-          backgroundColor: "#1995AD",
-          width: 300,
-          height: 45,
-          borderWidth: 0,
-          borderRadius: 5,}}
-          />
-        </View>
 
-        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1}}>
+        <View style = {{alignSelf: 'center', justifyContent: 'center', flex: 1, padding: 10}}>
           <Button title="End Meeting"  onPress={this._onEndMeeting} style={styles.endButton}
           icon={
             <Icon name='bell' size ={15} color='black'/>
@@ -146,11 +151,6 @@ export default class MeetingMenuScreen extends React.Component {
 
 
   _onEndMeeting = () => {
-    this.state.dialogArr.push("newelement" + count);
-    this.setState({
-      dialogArr: this.state.dialogArr,
-    });
-
     htmlStart += "<p>newelement" + count + "</p>";
     
     count++;
@@ -171,80 +171,6 @@ export default class MeetingMenuScreen extends React.Component {
     alert(file.filePath);
   }
   
-
-  _onGetDialog = () => {
-    // const { code } = this.props.navigation.state.params.data;
-
-    // console.log("code" + code);
-
-    // // this.listener = EventRegister.addEventListener('myCustomEvent', (data) => {
-    // //     this.setState({
-    // //         data,
-    // //     })
-    // // })
-    
-    // var db = firebase.database();
-
-    // // Check if the code is in the database
-    // var ref = db.ref('codes').child(code);
-    // var childData;
-
-    // ref.on("child_added", function(snapshot, prevChildKey) {
-    //   var newPost = snapshot.val();
-    //   // console.log("Author: " + newPost.author);
-    //   // console.log("Title: " + newPost.title);
-    //   // console.log("Previous Post ID: " + prevChildKey);
-    //   childData = newPost;
-    // });
-
-    // this.state.dialogArr.push(childData);
-    // this.setState({
-    //   "dialogArr": this.state.dialogArr,
-    // });
-
-    const { code } = this.props.navigation.state.params.data;
-  
-    var db = firebase.database();
-
-    // Check if the code is in the database
-    var ref = db.ref('codes').child("-LXCyBBtJNP10mTykf6l");
-
-    // Attach an asynchronous callback to read the data
-    ref.on("value", function(snapshot) {
-      console.log("REAL TIME FIREBASE READ");
-      currentDialogCount++;
-      //currentTranscript = snapshot.val();
-      console.log(snapshot.val());
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
-    
-    this._check();
-  }
-
-  // Instead of this function, add the following code to
-  // periodically update the state with the currentTranscript?
-  //  - put the counts as state variables
-  //
-  // componentDidMount() {
-  //   this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
-  // }
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
-
-  _check() {
-    // need an infinite loop here
-    if (currentTranscript != oldTranscript) {
-      console.log("CHECK: " + currentTranscript);
-      this.state.dialogArr.push(currentTranscript);
-      this.setState({
-        "dialogArr": this.state.dialogArr,
-      });
-      oldTranscript = currentTranscript;
-    }
-  }
-
   }
 
 const styles = StyleSheet.create({
@@ -262,7 +188,7 @@ const styles = StyleSheet.create({
   },
   item_text_style:
   {
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
     fontSize: 20,
     color: '#000',
     padding: 10

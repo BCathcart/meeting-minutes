@@ -4,10 +4,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {Header} from 'react-native-elements';
 import {Button} from 'react-native-elements';
 import {
-  Image,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   TextInput,
 } from 'react-native';
