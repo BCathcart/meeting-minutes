@@ -70,9 +70,9 @@ export default class MeetingMenuScreen extends React.Component {
   _onPressNewMeeting = () => {
     var database = firebase.database();
     var generatedCode = makeid();
-    database.ref('meetings/').child(generatedCode).push({
-        stuff: "[]",
-  });
+      database.ref('codes/').child(generatedCode).set({
+          stuff: "[]",
+    });
     this.props.navigation.navigate('NewMeeting', {data: {code: generatedCode}});
   }
 

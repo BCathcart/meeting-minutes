@@ -10,6 +10,8 @@ import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Header} from 'react-native-elements';
 
+var tmpCode;
+
 
 export default class NewMeetingScreen extends React.Component {
 static navigationOptions = {
@@ -18,6 +20,7 @@ static navigationOptions = {
 
 render() {
   const { code } = this.props.navigation.state.params.data;
+  tmpCode = code;
   return (
 
     <View style={styles.container}>
@@ -58,7 +61,8 @@ render() {
 }
 
 _onPressOkay = () => {
-  this.props.navigation.navigate('MeetingDialog');
+  console.log("tmpCode" + tmpCode)
+  this.props.navigation.navigate('MeetingDialog', {data: {code: tmpCode}});
 }
 _onPressBackButton = () => {
   this.props.navigation.pop();

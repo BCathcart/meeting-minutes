@@ -4,10 +4,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {Header} from 'react-native-elements';
 import {Button} from 'react-native-elements';
 import {
-  Image,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   TextInput,
 } from 'react-native';
@@ -95,12 +93,12 @@ export default class MeetingCodeEnterScreen extends React.Component {
         this.setState({
             textValue: ''
         });
-        this.props.navigation.navigate('MeetingDialog');
+        this.props.navigation.navigate('MeetingDialog', {data: {code: this.state.code}});
     } else {
         this.setState({
             textValue: 'Incorrect Code'
         });
-        this.props.navigation.navigate('MeetingDialog'); // TODO: remove
+        //this.props.navigation.navigate('MeetingDialog'); // TODO: remove
     }
 
   }
